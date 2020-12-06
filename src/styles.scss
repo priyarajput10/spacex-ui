@@ -1,0 +1,95 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files */
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+@import "./assets/_variables.scss";
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$tpg-pwa-framework-primary: mat-palette($mat-grey);
+$tpg-pwa-framework-accent: mat-palette($mat-white, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$tpg-pwa-framework-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$tpg-pwa-framework-theme: mat-light-theme(
+  $tpg-pwa-framework-primary,
+  $tpg-pwa-framework-accent,
+  $tpg-pwa-framework-warn
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($tpg-pwa-framework-theme);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.bg-gray {
+  background: rgba(229, 229, 229, 0.7);
+}
+body {
+  @extend .bg-gray;
+  padding: 10px;
+}
+.mt-0 {
+  margin-top: 0 !important;
+}
+.mt-20 {
+  margin-top: 20px !important;
+}
+.page-h6 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.font-size16 {
+  font-size: 16px;
+}
+
+.text-blue {
+  color: blue;
+}
+
+.mat-card-image {
+  width: 100% !important;
+  margin: 0 0 10px 0 !important;
+}
+
+.mat-card {
+  margin: 10px;
+}
+
+.year-box {
+  background: #c3e195;
+  border-radius: 5px;
+  margin: 10px 10px 0 0;
+  padding: 6px 10px;
+}
+
+.lanuch {
+  text-align: center;
+  margin: 10px 10px 0;
+  border-bottom: 1px solid #000;
+}
+
+
+.active {
+  background: #78b11f;
+}

@@ -1,0 +1,95 @@
+<h6 class="page-h6"><strong>SpcaeX Launch Programs</strong></h6>
+<div fxLayout="row" fxLayout.xs="column" class="height-100">
+    <div fxFlex="15%" fxLayout="row wrap" fxLayout.xs="row" fxFlex.sm="30%" fxFlex.xs="100%" ngClass="p-6"
+        ngClass.xs="p-3">
+        <div fxLayout.xs="row wrap" fxFlex="100%" fxLayoutAlign.xs="start center" fxFlex.xs="100%" class="txt-bx"
+            ngClass="mb-5" ngClass.xs="m-0">
+
+            <mat-card class="example-card" fxLayoutGap="10px">
+                <nav>
+                    <h6 class="mt-0 font-size16"><strong>Filter</strong></h6>
+                    <div class="lanuch">Launch Year</div>
+                    <div fxLayout="row wrap">
+                        <div fxFlex="50%" *ngFor="let item of yearsList">
+                            <div class="year-box" [ngClass]="{'active': filters.year == item}" fxLayoutGap="10px"
+                                (click)="yearFilter(item)">
+                                {{item}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lanuch mt-20">SuccessfulLaunch</div>
+                    <div fxLayout="row wrap">
+                        <div fxFlex="50%">
+                            <div class="year-box" [ngClass]="filters.launch == 'true' ? 'active' : ''"
+                                (click)="successfulLaunch('true')">
+                                True
+                            </div>
+                        </div>
+                        <div fxFlex="50%">
+                            <div class="year-box" [ngClass]="filters.launch == 'false' ? 'active' : ''"
+                                (click)="successfulLaunch('false')">
+                                False
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lanuch mt-20">SuccessfulLanding</div>
+                    <div fxLayout="row wrap">
+                        <div fxFlex="50%">
+                            <div class="year-box" [ngClass]="filters.landing == 'true' ? 'active' : ''"
+                                (click)="successfulLanding('true')">
+                                True
+                            </div>
+                        </div>
+                        <div fxFlex="50%">
+                            <div class="year-box" [ngClass]="filters.landing == 'false' ? 'active' : ''"
+                                (click)="successfulLanding('false')">
+                                False
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </mat-card>
+        </div>
+    </div>
+    <div fxFlex="85%" fxFlex.xs="auto" fxLayout="row" ngClass="relative login-module" ngClass.xs="login-illustration"
+        fxLayoutAlign="start start" fxLayoutAlign.xs="start">
+        <div fxLayout="row wrap">
+            <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let item of records">
+                <mat-card class="example-card" fxLayoutGap="10px">
+                    <img mat-card-image class="bg-gray " [src]="item.links.mission_patch" alt="Photo of mission patch">
+                    <mat-card-content>
+                        <div class="text-blue font-size16"><strong>{{item.mission_name}}<span>
+                                    #{{item.flight_number}}</span></strong></div>
+                        <div>
+                            <span><strong>Missionids -</strong>
+                                <ul>
+                                    <li *ngFor="let id of item.mission_id">
+                                        <span class="text-blue"> {{id}}</span>
+                                    </li>
+                                    <li *ngIf="item.mission_id.length == 0">
+                                        <span class="text-blue"> No Ids found</span>
+                                    </li>
+                                </ul>
+                            </span>
+                        </div>
+                        <div>
+                            <strong>Launch Year -</strong> <span class="text-blue"> {{item.launch_year}} </span>
+                        </div>
+
+                        <div>
+                            <strong>Successful Launch -</strong> <span class="text-blue"> {{item.launch_success}}</span>
+                        </div>
+                        <div>
+                            <strong>Successful Landing -</strong><span class="text-blue"> {{item.launch_success}}</span>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div fxFlex="100%" fxFlex.xs="100%" fxFlex.sm="100%" *ngIf="records.length === 0">No Data for Filters:
+                <p> year : {{filters.year}}</p>
+                <p> landing : {{filters.landing}}</p>
+                <p> launch : {{filters.launch}}</p>
+            </div>
+        </div>
+    </div>
+</div>
